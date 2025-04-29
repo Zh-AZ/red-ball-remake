@@ -43,10 +43,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5252282126718981934}
     m_Modifications:
+    - target: {fileID: 1289654043918070982, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
+    - target: {fileID: 3215904783064617990, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
+    - target: {fileID: 3671163598540234320, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
+    - target: {fileID: 4895392546580645703, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
     - target: {fileID: 4980008829699691856, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
       propertyPath: m_Name
       value: ConstructionElevatorPart (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5572697436804432505, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
     - target: {fileID: 9031198868501521091, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -105,10 +125,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5252282126718981934}
     m_Modifications:
+    - target: {fileID: 1289654043918070982, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
+    - target: {fileID: 3215904783064617990, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
+    - target: {fileID: 3671163598540234320, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
+    - target: {fileID: 4895392546580645703, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
     - target: {fileID: 4980008829699691856, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
       propertyPath: m_Name
       value: ConstructionElevatorPart
       objectReference: {fileID: 0}
+    - target: {fileID: 5572697436804432505, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
     - target: {fileID: 9031198868501521091, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1072998
@@ -167,10 +207,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5252282126718981934}
     m_Modifications:
+    - target: {fileID: 1289654043918070982, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
+    - target: {fileID: 3215904783064617990, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
+    - target: {fileID: 3671163598540234320, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
+    - target: {fileID: 4895392546580645703, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
     - target: {fileID: 4980008829699691856, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
       propertyPath: m_Name
       value: ConstructionElevatorPart (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5572697436804432505, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
     - target: {fileID: 9031198868501521091, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1072693
@@ -229,10 +289,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5252282126718981934}
     m_Modifications:
+    - target: {fileID: 1289654043918070982, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
+    - target: {fileID: 3215904783064617990, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
+    - target: {fileID: 3671163598540234320, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
+    - target: {fileID: 4895392546580645703, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
     - target: {fileID: 4980008829699691856, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
       propertyPath: m_Name
       value: ConstructionElevatorPart (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5572697436804432505, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c8e9b4b5aecc4745a62f8f698da5e07, type: 2}
     - target: {fileID: 9031198868501521091, guid: 794bafdb762180a4d85380d3a36ced5f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.000030517578
