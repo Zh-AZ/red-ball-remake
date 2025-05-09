@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RightTrigger
+  - LeftTrigger
+  - CenterTrigger
+  - EvilBox_1
+  - EvilBox_2
   layers:
   - Default
   - TransparentFX
