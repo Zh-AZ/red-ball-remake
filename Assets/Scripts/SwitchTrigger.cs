@@ -6,6 +6,7 @@ public class SwitchTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject evilBox;
     [SerializeField] private GameObject switchTrigger;
+    private Rigidbody rb;
     private Animator anim;
     private float seconds;
     private bool isFromBottomToUp;
@@ -13,6 +14,7 @@ public class SwitchTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         anim = evilBox.GetComponent<Animator>();
     }
 
@@ -30,6 +32,8 @@ public class SwitchTrigger : MonoBehaviour
     {
         if (collision.gameObject.name == "SwitchTrigger" && isFromBottomToUp)
         {
+            rb.isKinematic = true;
+            rb.isKinematic = false;
             collision.gameObject.SetActive(false);
             isFromBottomToUp = false;
             anim.SetTrigger("WalkUpperTrigger");
