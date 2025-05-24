@@ -12,10 +12,4 @@ public class LeftRotation : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetBool("IsLeftRotation", true);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -6,18 +6,6 @@ public class SwitchCamera : MonoBehaviour
 {
     [SerializeField] private Camera[] cameras;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void CameraSwitch()
     {
         if (cameras[0].gameObject.activeSelf)

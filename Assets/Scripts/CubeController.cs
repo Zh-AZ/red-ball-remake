@@ -23,7 +23,6 @@ public class CubeController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = evilBox.GetComponent<Animator>();
-        //rb.AddForce(Vector3.right * 1.5f, ForceMode.Impulse);
         isLeftSide = true;
     }
 
