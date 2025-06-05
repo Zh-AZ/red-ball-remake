@@ -8,6 +8,7 @@ namespace RedBallRemake.Inputs
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField, Range(0, 10)] private float speed = 2.0f;
+        [SerializeField] private Transform followTarget;
         private Rigidbody playerRigidbody;
 
         private void Awake()
@@ -18,13 +19,12 @@ namespace RedBallRemake.Inputs
         // Start is called before the first frame update
         void Start()
         {
-
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            followTarget.position = transform.position;
         }
 
         public void MoveCharacter(Vector3 movement)
