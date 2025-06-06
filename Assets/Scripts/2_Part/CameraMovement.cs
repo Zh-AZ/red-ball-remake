@@ -2,25 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+namespace RedBallRemake.Inputs
 {
-    [SerializeField] private Transform playerTransform;
-    private Vector3 offset; 
-
-    // Start is called before the first frame update
-    void Start()
+    public class CameraMovement : MonoBehaviour
     {
-        offset = transform.position - playerTransform.position;
-    }
+        [SerializeField] private Transform playerTransform;
+        private Vector3 offset;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        private void Awake()
+        {
+            offset = transform.position - playerTransform.position;
+        }
 
-    private void FixedUpdate()
-    {
-        transform.position = playerTransform.position + offset;
+        // Start is called before the first frame update
+        void Start()
+        {
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            
+        }
+
+        private void FixedUpdate()
+        {
+            transform.position = playerTransform.position + offset;
+        }
     }
 }
+

@@ -7,7 +7,9 @@ namespace RedBallRemake.Inputs
     [RequireComponent(typeof(PlayerMovement))]
     public class PlayerInput : MonoBehaviour
     {
-        [SerializeField] private Camera _camera;
+        [SerializeField] private Camera thirdView;
+        [SerializeField] private Camera firstView;
+        [SerializeField] private GameObject thirdPersonView;
         private Vector3 movement;
         private PlayerMovement playerMovement;
 
@@ -25,24 +27,46 @@ namespace RedBallRemake.Inputs
         // Update is called once per frame
         void Update()
         {
-            float horizontal = Input.GetAxis(GlobalStringVars.Horizontal_Axis);
-            float vertical = Input.GetAxis(GlobalStringVars.Vertical_Axis);
+            if (thirdView.depth == 10)
+            {
+                FollowCamera(thirdView);
+            }
+            else
+            {
+                FollowCamera(firstView);
+            }
 
-            Vector3 camForward = _camera.transform.forward;
-            Vector3 camRight = _camera.transform.right;
-
-            camForward.y = 0; 
-            camRight.y = 0;
-            camForward.Normalize(); 
-            camRight.Normalize();
-
-            movement = (camForward * vertical + camRight * horizontal).normalized;
-            //movement = new Vector3(horizontal, 0,vertical).normalized;
+            if (Input.GetKeyDown(KeyCode.V) && thirdView.depth == 10)
+            {
+                thirdView.depth = 0;
+                firstView.depth = 10;
+            }
+            else if (Input.GetKeyDown(KeyCode.V) && thirdView.depth < 10) 
+            {
+                firstView.depth = 0;
+                thirdView.depth = 10;
+            }
         }
 
         private void FixedUpdate()
         {
             playerMovement.MoveCharacter(movement);
+        }
+
+        private void FollowCamera(Camera camera)
+        {
+            float horizontal = Input.GetAxis(GlobalStringVars.Horizontal_Axis);
+            float vertical = Input.GetAxis(GlobalStringVars.Vertical_Axis);
+
+            Vector3 camForward = camera.transform.forward;
+            Vector3 camRight = camera.transform.right;
+
+            camForward.y = 0;
+            camRight.y = 0;
+            camForward.Normalize();
+            camRight.Normalize();
+
+            movement = (camForward * vertical + camRight * horizontal).normalized;
         }
     }
 }
