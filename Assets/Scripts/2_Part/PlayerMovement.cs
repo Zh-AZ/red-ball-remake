@@ -7,7 +7,7 @@ namespace RedBallRemake.Inputs
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField, Range(0, 10)] private float speed = 5.0f;
+        [SerializeField, Range(0, 10)] private float speed = 3.0f;
         [SerializeField] private float jumpForce;
         [SerializeField] private Transform followTarget;
         private Rigidbody playerRigidbody;
@@ -52,7 +52,7 @@ namespace RedBallRemake.Inputs
         [ContextMenu("Reset Values")]
         public void ResetValues()
         {
-            speed = 5.0f;
+            speed = 3.0f;
         }
 
 #endif

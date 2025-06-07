@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField] private int sceneIndex;
+
     public void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -25,6 +27,14 @@ public class SceneLoader : MonoBehaviour
         else
         {
             Time.timeScale = 1;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            LoadScene(sceneIndex);
         }
     }
 }   
