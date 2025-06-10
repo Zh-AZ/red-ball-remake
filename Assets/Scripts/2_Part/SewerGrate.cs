@@ -22,7 +22,7 @@ public class SewerGrate : MonoBehaviour
     {
         if (other.CompareTag("Player") && (Input.GetKeyDown(KeyCode.E)))
         {
-            openSewerGrate.SetTrigger("OpenSewerGrate");
+            openSewerGrate.SetTrigger("OpenDoor");
         }
     }
 }

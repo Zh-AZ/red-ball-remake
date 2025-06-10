@@ -9,6 +9,8 @@ TagManager:
   - CenterTrigger
   - EvilBox_1
   - EvilBox_2
+  - Vision
+  - HiddenPlayer
   layers:
   - Default
   - TransparentFX

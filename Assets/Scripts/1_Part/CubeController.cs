@@ -128,7 +128,7 @@ public class CubeController : MonoBehaviour
             centerTrigger.SetActive(false);
             leftTrigger.SetActive(true);
             rightTrigger.SetActive(true);
-            
+
             if (isLeftSide)
             {
                 anim.SetTrigger("LookLeft");
