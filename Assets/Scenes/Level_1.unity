@@ -9548,6 +9548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openSewerGrate: {fileID: 1269547422}
+  isTransitonTo_3Level: 0
 --- !u!1001 &299505593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51768,7 +51769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  jumpForce: 300
+  jumpForce: 200
   followTarget: {fileID: 48674342}
 --- !u!114 &1565754076
 MonoBehaviour:

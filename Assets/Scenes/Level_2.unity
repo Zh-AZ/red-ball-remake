@@ -6121,7 +6121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  jumpForce: 300
+  jumpForce: 200
   followTarget: {fileID: 1797255432}
 --- !u!114 &186300015
 MonoBehaviour:

@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private int sceneIndex;
-
     public void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
