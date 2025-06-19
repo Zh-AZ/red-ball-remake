@@ -23,7 +23,7 @@ public class DestroyBlade : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        else
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             Destroy(other.gameObject);
         }
