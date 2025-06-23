@@ -5,7 +5,9 @@ using UnityEngine;
 public class ObjectState : MonoBehaviour
 {
     [SerializeField] private Rigidbody rigidBodytoToggle;
+    [SerializeField] private GameObject fallingSwing;
     [SerializeField] private bool isDisappeared;
+    [SerializeField] private bool canFallObject;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,11 @@ public class ObjectState : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        else
+        else if (collision.gameObject.CompareTag("Player") && canFallObject)
+        {
+            Destroy(fallingSwing.GetComponent<HingeJoint>());
+        }
+        else 
         {
             rigidBodytoToggle.isKinematic = false;
         }
