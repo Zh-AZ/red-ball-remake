@@ -29,7 +29,14 @@ public class ObjectState : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Player") && canFallObject)
         {
-            Destroy(fallingSwing.GetComponent<HingeJoint>());
+            if (fallingSwing.GetComponent<HingeJoint>() == null)
+            {
+                rigidBodytoToggle.isKinematic = false;
+            }
+            else
+            {
+                Destroy(fallingSwing.GetComponent<HingeJoint>());
+            }
         }
         else 
         {
