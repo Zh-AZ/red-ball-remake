@@ -11,6 +11,7 @@ TagManager:
   - EvilBox_2
   - Vision
   - HiddenPlayer
+  - Interaction
   layers:
   - Default
   - TransparentFX

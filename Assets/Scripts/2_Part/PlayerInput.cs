@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace RedBallRemake.Inputs
 {
@@ -10,18 +11,20 @@ namespace RedBallRemake.Inputs
         [SerializeField] private Camera thirdView;
         [SerializeField] private Camera firstView;
         [SerializeField] private GameObject thirdPersonView;
+        [SerializeField] private GameObject[] menuCanvas;
         private Vector3 movement;
         private PlayerMovement playerMovement;
+        private MeshRenderer playerMeshRenderer;
 
         private void Awake()
         {
             playerMovement = GetComponent<PlayerMovement>();
+            playerMeshRenderer = GetComponent<MeshRenderer>();
         }
 
         // Start is called before the first frame update
         void Start()
         {
-
         }
 
         // Update is called once per frame
@@ -40,11 +43,32 @@ namespace RedBallRemake.Inputs
             {
                 thirdView.depth = 0;
                 firstView.depth = 10;
+                playerMeshRenderer.enabled = false;
             }
-            else if (Input.GetKeyDown(KeyCode.V) && thirdView.depth < 10) 
+            else if (Input.GetKeyDown(KeyCode.V) && thirdView.depth < 10)
             {
                 firstView.depth = 0;
                 thirdView.depth = 10;
+                playerMeshRenderer.enabled = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                //EventSystem.current.SetSelectedGameObject(null);
+
+                foreach (GameObject canvas in menuCanvas)
+                {
+                    if (canvas.activeSelf)
+                    {
+                        canvas.SetActive(false);
+                        Time.timeScale = 1;
+                    }
+                    else
+                    {
+                        canvas.SetActive(true);
+                        Time.timeScale = 0;
+                    }
+                }
             }
         }
 

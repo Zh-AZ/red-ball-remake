@@ -6,6 +6,7 @@ public class ObjectState : MonoBehaviour
 {
     [SerializeField] private Rigidbody rigidBodytoToggle;
     [SerializeField] private GameObject fallingSwing;
+    [SerializeField] private GameObject gameObjectToDestroy;
     [SerializeField] private bool isDisappeared;
     [SerializeField] private bool canFallObject;
 
@@ -23,9 +24,15 @@ public class ObjectState : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        if (gameObjectToDestroy != null)
+        {
+            Destroy(gameObjectToDestroy);
+        }
+
         if (collision.gameObject.CompareTag("Player") && isDisappeared)
         {
             gameObject.SetActive(false);
+       
         }
         else if (collision.gameObject.CompareTag("Player") && canFallObject)
         {

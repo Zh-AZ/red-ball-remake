@@ -2,38 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+namespace RedBallRemake.Inputs 
 {
-    [SerializeField] private int sceneIndex;
-    public void ResetScene()
+    public class SceneLoader : MonoBehaviour
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void LoadScene(int scene)
-    {
-        SceneManager.LoadScene(scene);
-    }
-
-    public void Pause()
-    {
-        if (Time.timeScale == 1)
+        [SerializeField] private int sceneIndex;
+        public void ResetScene()
         {
-            Time.timeScale = 0;
-        }    
-        else
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void LoadScene(int scene)
         {
-            Time.timeScale = 1;
+            SceneManager.LoadScene(scene);
+        }
+
+        public void Pause(bool isResume)
+        {
+            if (isResume)
+            {
+                Time.timeScale = 1;
+            }
+            else
+            {
+                Time.timeScale = 0;
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                LoadScene(sceneIndex);
+            }
         }
     }
+}
 
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            LoadScene(sceneIndex);
-        }
-    }
-}   
