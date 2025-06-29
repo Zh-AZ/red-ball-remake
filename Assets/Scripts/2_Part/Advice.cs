@@ -11,13 +11,7 @@ public class Advice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(WaitTime());
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        StartCoroutine(OrganizeTips());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,7 +30,11 @@ public class Advice : MonoBehaviour
         }
     }
 
-    private IEnumerator WaitTime()
+    /// <summary>
+    /// Подсказки игроку
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator OrganizeTips()
     {
         for (int i = 0; i < adviceText.Length; i++)
         {
@@ -45,5 +43,4 @@ public class Advice : MonoBehaviour
             adviceText[i].SetActive(false);
         }
     }
-
 }

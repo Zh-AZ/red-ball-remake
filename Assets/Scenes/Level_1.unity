@@ -7193,7 +7193,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202171469}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ade5c10ea9dba0f4397fb06bd332aa23, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9899,10 +9899,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 298157586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279a90e156a991d418438e7130b0b681, type: 3}
+  m_Script: {fileID: 11500000, guid: 582e67b352d231942ac823f3cc3b9d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openSewerGrate: {fileID: 1269547422}
+  openingDoors: {fileID: 1269547422}
   isTransitonTo_3Level: 0
 --- !u!1001 &299505593
 PrefabInstance:
@@ -37416,11 +37416,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2166445446950060989, guid: dc0429dd1191e2c41af5982ccc268869, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.231714
+      value: -1.2317141
       objectReference: {fileID: 0}
     - target: {fileID: 2166445446950060989, guid: dc0429dd1191e2c41af5982ccc268869, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5235187
+      value: 0.590786
       objectReference: {fileID: 0}
     - target: {fileID: 2166445446950060989, guid: dc0429dd1191e2c41af5982ccc268869, type: 3}
       propertyPath: m_LocalRotation.w
@@ -37428,15 +37428,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2166445446950060989, guid: dc0429dd1191e2c41af5982ccc268869, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2166445446950060989, guid: dc0429dd1191e2c41af5982ccc268869, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2166445446950060989, guid: dc0429dd1191e2c41af5982ccc268869, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2166445446950060989, guid: dc0429dd1191e2c41af5982ccc268869, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -52829,7 +52829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  jumpForce: 200
+  jumpForce: 250
   followTarget: {fileID: 48674342}
 --- !u!114 &1565754076
 MonoBehaviour:

@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class CursorChecker : MonoBehaviour
 {
-    [SerializeField] private GameObject[] menuCanvases; // Array to hold menu canvases
-    [SerializeField] private GameObject playerComponents; // Reference to player components
+    [SerializeField] private GameObject[] menuCanvases; 
+    [SerializeField] private GameObject playerComponents;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    /// <summary>
+    /// Скрыть курсор в игре, если не открыто меню
+    /// </summary>
     // Update is called once per frame
     void Update()
     {

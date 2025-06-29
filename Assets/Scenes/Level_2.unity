@@ -13095,10 +13095,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 392064528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279a90e156a991d418438e7130b0b681, type: 3}
+  m_Script: {fileID: 11500000, guid: 582e67b352d231942ac823f3cc3b9d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openSewerGrate: {fileID: 386910210}
+  openingDoors: {fileID: 386910210}
   isTransitonTo_3Level: 0
 --- !u!65 &392064530
 BoxCollider:
@@ -16980,8 +16980,8 @@ GameObject:
   - component: {fileID: 511762247}
   - component: {fileID: 511762246}
   - component: {fileID: 511762245}
-  - component: {fileID: 511762244}
   - component: {fileID: 511762243}
+  - component: {fileID: 511762248}
   m_Layer: 0
   m_Name: ElevatorTrigger
   m_TagString: Interaction
@@ -17013,24 +17013,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 511762241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279a90e156a991d418438e7130b0b681, type: 3}
+  m_Script: {fileID: 11500000, guid: 582e67b352d231942ac823f3cc3b9d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openSewerGrate: {fileID: 1152627733}
-  isTransitonTo_3Level: 0
---- !u!114 &511762244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511762241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279a90e156a991d418438e7130b0b681, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openSewerGrate: {fileID: 64317768}
+  openingDoors: {fileID: 1152627733}
   isTransitonTo_3Level: 0
 --- !u!65 &511762245
 BoxCollider:
@@ -17103,6 +17089,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511762241}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &511762248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511762241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582e67b352d231942ac823f3cc3b9d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openingDoors: {fileID: 64317768}
+  isTransitonTo_3Level: 0
 --- !u!1001 &514349562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28990,10 +28990,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 881244276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279a90e156a991d418438e7130b0b681, type: 3}
+  m_Script: {fileID: 11500000, guid: 582e67b352d231942ac823f3cc3b9d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openSewerGrate: {fileID: 1152627733}
+  openingDoors: {fileID: 1152627733}
   isTransitonTo_3Level: 1
 --- !u!65 &881244280
 BoxCollider:

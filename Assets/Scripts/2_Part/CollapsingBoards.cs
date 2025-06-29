@@ -17,12 +17,6 @@ public class CollapsingBoards : MonoBehaviour
         board.isKinematic = true; 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))

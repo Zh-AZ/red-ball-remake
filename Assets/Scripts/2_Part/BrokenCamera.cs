@@ -19,12 +19,10 @@ public class BrokenCamera : MonoBehaviour
         cameraRigidbody = cameraRigidbody.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// ¬ывод камеры при столкновении с игроком
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))

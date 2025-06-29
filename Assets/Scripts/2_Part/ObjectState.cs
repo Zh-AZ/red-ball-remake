@@ -16,12 +16,10 @@ public class ObjectState : MonoBehaviour
         rigidBodytoToggle = rigidBodytoToggle.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Взаимодействие с объектом при столкновениий на уровне стройки
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionStay(Collision collision)
     {
         if (gameObjectToDestroy != null)
