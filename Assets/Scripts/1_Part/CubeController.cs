@@ -29,7 +29,7 @@ public class CubeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetFloat("Velocity", rb.velocity.magnitude);
+        anim.SetFloat("Velocity", rb.linearVelocity.magnitude);
 
         if (isGoTimer)
         {
