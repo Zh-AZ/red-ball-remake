@@ -25,11 +25,11 @@ public class GeneratorTrigger : PlayerInventory
 
     private void OnTriggerStay(Collider other)
     {
-        if (this.hasCanisterFuel == false)
+        if (hasCanisterFuel == false)
         {
             Debug.Log("You need a fuel canister to start the generator!");
         }
-        else if (this.hasCanisterFuel == true && Input.GetKeyDown(KeyCode.E))
+        else if (hasCanisterFuel && Input.GetKeyDown(KeyCode.E))
         {
             generatorLampCopy.SetActive(false);
             firstLampCopy.SetActive(false);
@@ -38,6 +38,8 @@ public class GeneratorTrigger : PlayerInventory
             generatorLight.SetActive(true);
             firstLight.SetActive(true);
             secondLight.SetActive(true);
+            hasElectricity = true;
+            
             Debug.Log("You have refueled the generator! Electricity restored.");
         }   
     }

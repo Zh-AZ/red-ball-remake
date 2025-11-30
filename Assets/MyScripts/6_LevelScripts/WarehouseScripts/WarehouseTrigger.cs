@@ -23,11 +23,11 @@ public class WarehouseTrigger : PlayerInventory
 
     private void OnTriggerStay(Collider other)
     {
-        if (this.hasElectricity == false)
+        if (hasElectricity == false)
         {
             Debug.Log("You need to restore electricity to open the warehouse!");
         }
-        else if (this.hasElectricity == true && Input.GetKeyDown(KeyCode.E))
+        else if (hasElectricity && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("You have restored electricity to open the warehouse!");
             warehouseDoorAnimation.SetTrigger("WarehouseOpenDoor");

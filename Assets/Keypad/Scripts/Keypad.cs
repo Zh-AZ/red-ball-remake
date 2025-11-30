@@ -40,6 +40,8 @@ namespace NavKeypad
 
         [SerializeField] private Camera safeCamera;
         [SerializeField] private Animator safeDoorAnim;
+        [SerializeField] private GameObject burglarKeysTrigger;
+        [SerializeField] private GameObject safeTrigger;
 
 
         private string currentInput;
@@ -133,10 +135,13 @@ namespace NavKeypad
 
         private IEnumerator WaitSeconds()
         {
+            safeTrigger.SetActive(false);
             yield return new WaitForSeconds(1);
             safeCamera.depth = -1;
             yield return new WaitForSeconds(2);
             safeDoorAnim.SetTrigger("SafeOpenDoor");
+            yield return new WaitForSeconds(2);
+            burglarKeysTrigger.SetActive(true);
         }
     }
 }
