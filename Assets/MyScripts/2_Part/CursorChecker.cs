@@ -6,6 +6,7 @@ public class CursorChecker : MonoBehaviour
 {
     [SerializeField] private GameObject[] menuCanvases; 
     [SerializeField] private GameObject playerComponents;
+    [SerializeField] private Camera safeCamera;
 
     /// <summary>
     /// Скрыть курсор в игре, если не открыто меню
@@ -13,7 +14,7 @@ public class CursorChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!menuCanvases[0].activeSelf && !menuCanvases[1].activeSelf && playerComponents.activeSelf)
+        if (!menuCanvases[0].activeSelf && !menuCanvases[1].activeSelf && playerComponents.activeSelf && safeCamera.depth == -1)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

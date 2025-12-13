@@ -1,8 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class WarehouseTrigger : PlayerInventory
 {
-    [SerializeField] private Animator warehouseDoorAnimation; 
+    [SerializeField] private Animator warehouseDoorAnimation;
+    [SerializeField] private TMP_Text[] text;
 
     private void Awake()
     {
@@ -23,14 +25,26 @@ public class WarehouseTrigger : PlayerInventory
 
     private void OnTriggerStay(Collider other)
     {
+        foreach (var t in text)
+            t.gameObject.SetActive(true);
+
         if (hasElectricity == false)
         {
-            Debug.Log("You need to restore electricity to open the warehouse!");
+            foreach (var t in text)
+                t.text = "You need to restore electricity to open the warehouse!";
         }
         else if (hasElectricity && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("You have restored electricity to open the warehouse!");
+            foreach (var t in text)
+                t.text = "You have the electricity to open the warehouse!";
+
             warehouseDoorAnimation.SetTrigger("WarehouseOpenDoor");
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        foreach (var t in text)
+            t.gameObject.SetActive(false);
     }
 }

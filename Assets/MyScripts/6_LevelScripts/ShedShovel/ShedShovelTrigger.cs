@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class ShedShovelTrigger : PlayerInventory
 {
     [SerializeField] private Animator rightShedDoorAnimation;
     [SerializeField] private Animator leftShedDoorAnimation;
+    [SerializeField] private TMP_Text[] text;
 
     private void Awake()
     {
@@ -19,15 +21,28 @@ public class ShedShovelTrigger : PlayerInventory
 
     private void OnTriggerStay(Collider other)
     {
+        foreach (var t in text)
+            t.gameObject.SetActive(true);
+        
         if (hasKey == false)
         {
-            Debug.Log("You need the key to open the shed!");
+            foreach (var t in text)
+                t.text = "You need the key to open the shed!";
+
         }
         else if (hasKey && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("You have the key to open the shed!");
+            foreach (var t in text)
+                t.text = "You have the key to open the shed!";
+
             rightShedDoorAnimation.SetTrigger("ShedShovelOpenRightDoor");
             leftShedDoorAnimation.SetTrigger("ShedOpenLeftDoor");
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        foreach (var t in text)
+            t.gameObject.SetActive(false);
     }
 }

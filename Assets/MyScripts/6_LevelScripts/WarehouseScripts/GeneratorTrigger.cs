@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GeneratorTrigger : PlayerInventory
@@ -10,6 +11,8 @@ public class GeneratorTrigger : PlayerInventory
     [SerializeField] private GameObject firstLampCopy;
     [SerializeField] private GameObject secondLampCopy;
     //private MeshRenderer meshRenderer;
+
+    [SerializeField] private TMP_Text[] interactText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,9 +28,13 @@ public class GeneratorTrigger : PlayerInventory
 
     private void OnTriggerStay(Collider other)
     {
+        foreach (var t in interactText)
+            t.gameObject.SetActive(true);
+
         if (hasCanisterFuel == false)
         {
-            Debug.Log("You need a fuel canister to start the generator!");
+            foreach (var t in interactText)
+                t.text = "You need a fuel canister to start the generator!";
         }
         else if (hasCanisterFuel && Input.GetKeyDown(KeyCode.E))
         {
@@ -40,7 +47,14 @@ public class GeneratorTrigger : PlayerInventory
             secondLight.SetActive(true);
             hasElectricity = true;
             
-            Debug.Log("You have refueled the generator! Electricity restored.");
+            foreach (var t in interactText)
+                t.text = "You have refueled the generator! Electricity restored!";
         }   
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        foreach (var t in interactText)
+            t.gameObject.SetActive(false);
     }
 }

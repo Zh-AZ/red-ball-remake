@@ -42,6 +42,7 @@ namespace NavKeypad
         [SerializeField] private Animator safeDoorAnim;
         [SerializeField] private GameObject burglarKeysTrigger;
         [SerializeField] private GameObject safeTrigger;
+        [SerializeField] private TMP_Text[] interactText;
 
 
         private string currentInput;
@@ -88,7 +89,7 @@ namespace NavKeypad
             }
             else
             {
-                Debug.LogWarning("Couldn't process input for some reason..");
+                //Debug.LogWarning("Couldn't process input for some reason..");
             }
 
         }
@@ -130,9 +131,13 @@ namespace NavKeypad
             onAccessGranted?.Invoke();
             panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
             audioSource.PlayOneShot(accessGrantedSfx);
+
+            foreach (var t in interactText)
+                t.gameObject.SetActive(false);
+
             StartCoroutine(WaitSeconds());
         }
-
+         
         private IEnumerator WaitSeconds()
         {
             safeTrigger.SetActive(false);
