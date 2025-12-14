@@ -1,8 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class HoseTrigger : PlayerInventory
 {
     [SerializeField] private GameObject hose;
+    [SerializeField] private TMP_Text[] interactText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,11 +20,33 @@ public class HoseTrigger : PlayerInventory
 
     private void OnTriggerStay(Collider other)
     {
+        foreach (TMP_Text text in interactText)
+        {
+            if (hasHose)
+            {
+                text.gameObject.SetActive(false);
+            }
+            else
+            {
+                text.gameObject.SetActive(true);
+            }
+            
+            text.text = "Press E to take the hose";
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             hasHose = true;
             hose.SetActive(false);
-            Debug.Log("You have taken the hose!");
+
+            foreach (TMP_Text text in interactText)
+                text.gameObject.SetActive(false);
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        foreach (TMP_Text text in interactText)
+            text.gameObject.SetActive(false);
     }
 }

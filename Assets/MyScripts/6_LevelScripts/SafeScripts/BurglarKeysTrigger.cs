@@ -31,6 +31,10 @@ public class BurglarKeysTrigger : PlayerInventory
         {
             hasBurglarKeys = true;
             burglarKeys.SetActive(false);
+            gameObject.SetActive(false);
+
+            foreach (var t in interactText)
+                t.gameObject.SetActive(false);
         }
     }
 

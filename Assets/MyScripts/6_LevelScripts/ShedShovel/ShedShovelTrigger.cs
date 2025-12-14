@@ -6,6 +6,7 @@ public class ShedShovelTrigger : PlayerInventory
     [SerializeField] private Animator rightShedDoorAnimation;
     [SerializeField] private Animator leftShedDoorAnimation;
     [SerializeField] private TMP_Text[] text;
+    //[SerializeField] private GameObject trigger;
 
     private void Awake()
     {
@@ -22,21 +23,27 @@ public class ShedShovelTrigger : PlayerInventory
     private void OnTriggerStay(Collider other)
     {
         foreach (var t in text)
-            t.gameObject.SetActive(true);
-        
-        if (hasKey == false)
         {
-            foreach (var t in text)
-                t.text = "You need the key to open the shed!";
-
-        }
-        else if (hasKey && Input.GetKeyDown(KeyCode.E))
-        {
-            foreach (var t in text)
+            if (hasKey)
+            {
                 t.text = "You have the key to open the shed!";
+            }
+            else if (!hasKey)
+            {
+                t.text = "You need the key to open the shed!";
+            }
 
+            t.gameObject.SetActive(true);
+        }
+
+        if (hasKey && Input.GetKeyDown(KeyCode.E))
+        {
             rightShedDoorAnimation.SetTrigger("ShedShovelOpenRightDoor");
             leftShedDoorAnimation.SetTrigger("ShedOpenLeftDoor");
+            gameObject.SetActive(false);
+
+            foreach (var t in text)
+                t.gameObject.SetActive(false);
         }
     }
 
