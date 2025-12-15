@@ -1,7 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class DestroyStones : PlayerInventory
 {
+    [SerializeField] private TMP_Text[] interactionText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,10 +19,34 @@ public class DestroyStones : PlayerInventory
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player") && hasShovel && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
-            Debug.Log("You have destroyed the stones!");
+            foreach (TMP_Text text in interactionText)
+            {
+                if (hasShovel)
+                {
+                    text.gameObject.SetActive(true);
+                    text.text = "Press E to destroy the stones";
+                }
+                else
+                {
+                    text.gameObject.SetActive(false);
+                }
+            }
+
+            if (hasShovel && Input.GetKeyDown(KeyCode.E))
+            {
+                Destroy(gameObject);
+
+                foreach (TMP_Text text in interactionText)
+                    text.gameObject.SetActive(false);
+            }
         }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        foreach (TMP_Text text in interactionText)
+            text.gameObject.SetActive(false);
     }
 }
