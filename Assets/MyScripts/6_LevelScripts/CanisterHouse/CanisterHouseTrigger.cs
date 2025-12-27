@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class CanisterHouseTrigger : PlayerInventory
 {
-    [SerializeField] private Animator canisterHouseDoor;
     [SerializeField] private TMP_Text[] interactText;
+    [SerializeField] private Camera lockCamera;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject originalLock;
+    [SerializeField] private GameObject fakeLock;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -66,8 +69,12 @@ public class CanisterHouseTrigger : PlayerInventory
 
         if (hasScrewdriver && hasHammer && hasBurglarKeys && Input.GetKeyDown(KeyCode.E))
         {
-            canisterHouseDoor.SetTrigger("CanisterHouseOpenDoor");
             gameObject.SetActive(false);
+
+            lockCamera.gameObject.SetActive(true);
+            originalLock.SetActive(true);
+            fakeLock.SetActive(false);
+            player.SetActive(false);
 
             foreach (var t in interactText)
                 t.gameObject.SetActive(false);

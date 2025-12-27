@@ -10,9 +10,9 @@ public class PlayerInventory : MonoBehaviour
     protected static bool hasCanisterFuel = false;
     protected static bool hasCanister = false;
 
-    protected static bool hasScrewdriver = false;
-    protected static bool hasHammer = false;
-    protected static bool hasBurglarKeys = false;
+    protected static bool hasScrewdriver = true;
+    protected static bool hasHammer = true;
+    protected static bool hasBurglarKeys = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

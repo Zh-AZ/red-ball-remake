@@ -1,9 +1,18 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
 
 public class LockPikingGame : MonoBehaviour
 {
+    [SerializeField] private Animator canisterHouseDoor;
+    [SerializeField] private GameObject lockCamera;
+    [SerializeField] private GameObject cursorChecker;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject failureMessage;
+    [SerializeField] private GameObject successMessage;
+
+
     float pickPosition;
 
     public float PickPosition
@@ -73,6 +82,7 @@ public class LockPikingGame : MonoBehaviour
         PickPosition = 0.5f;
         tension = 0f;
         paused = false;
+        failureMessage.SetActive(false);
     }
 
     private void Update()
@@ -99,14 +109,19 @@ public class LockPikingGame : MonoBehaviour
             
             if (tension > 1f)
             {
-                PickBreack();
+                StartCoroutine(PickBreack());
             }
         }
     }
 
-    private void PickBreack()
+    private IEnumerator PickBreack()
     {
         Debug.Log("Pick broke!");
+        failureMessage.SetActive(true);
+        paused = true;
+
+        yield return new WaitForSeconds(3f); 
+
         Reset();
     }
 
@@ -125,6 +140,7 @@ public class LockPikingGame : MonoBehaviour
     {
         paused = true;
         Debug.Log("You picked the lock!");
+        StartCoroutine(WaitSeconds());
     }
 
     private void Pick()
@@ -137,6 +153,21 @@ public class LockPikingGame : MonoBehaviour
         animator.SetFloat("PickPosition", pickPosition);
         animator.SetFloat("LockOpen", cylinderPosition);
         animator.SetBool("Shake", shaking);
+    }
+
+    private IEnumerator WaitSeconds()
+    {
+        successMessage.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+        
+        lockCamera.SetActive(false);
+        player.SetActive(true);
+        cursorChecker.SetActive(true);
+
+        yield return new WaitForSeconds(2);
+        
+        canisterHouseDoor.SetTrigger("CanisterHouseOpenDoor");
     }
 }
 
