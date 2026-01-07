@@ -1,3 +1,4 @@
+using RedBallRemake.Inputs;
 using System.Collections;
 using System.Threading;
 using UnityEngine;
@@ -6,18 +7,23 @@ using UnityEngine.UI;
 public class ExitMapFog : MonoBehaviour
 {
     [SerializeField] private Rigidbody player;
-    [SerializeField] private Image fogImage;
+    [SerializeField] private Image fogImageFPV;
+    [SerializeField] private Image fogImageTPV;
+    [SerializeField] private PlayerInput playerInput;
     public static ExitMapFog Instance;
-    
-
 
     Coroutine fadeRoutine;
     bool playerInside;
 
     private void Awake()
     {
-        player = player.GetComponent<Rigidbody>();
         Instance = this;
+    }
+
+    private void Start()
+    {
+        playerInput = player.GetComponent<PlayerInput>();
+        player = player.GetComponent<Rigidbody>();
     }
 
     public void EnterZone()
@@ -46,18 +52,22 @@ public class ExitMapFog : MonoBehaviour
 
     IEnumerator FadeTo(float target)
     {
-        while (!Mathf.Approximately(fogImage.color.a, target))
+        while (!Mathf.Approximately(fogImageFPV.color.a, target))
         {
-            var c = fogImage.color;
+            var c = fogImageFPV.color;
             c.a = Mathf.MoveTowards(c.a, target, Time.deltaTime * 0.1f);
             //c.a = Mathf.Lerp(c.a, target, 1 - Mathf.Exp(-2f * Time.deltaTime));
-            fogImage.color = c;
+            fogImageFPV.color = c;
+            fogImageTPV.color = c;
 
             if (c.a >= 0.99f && playerInside)
             {
                 player.position = GeneratRandomPosition();
                 //player.position = new Vector3(-0.37f, 0.9785688f, 52.83f);
                 player.linearVelocity = Vector3.zero;
+
+                playerInput.SwitchFirstPerson();
+
                 //TeleportPlayer(new Vector3(-0.37f, 0.9785688f, 52.83f));
                 Debug.Log("Player Teleported");
                 //player.transform.position = new Vector3(-0.37f, 0.9785688f, 52.83f);
@@ -71,7 +81,7 @@ public class ExitMapFog : MonoBehaviour
 
     // 37.25539 0.9882324 5.580494
     // 16.345 0.9882324 -40.206
-    //  -31.98843 1.157 -11.96516
+    // -31.98843 1.157 -11.96516
 
     private Vector3 GeneratRandomPosition()
     {

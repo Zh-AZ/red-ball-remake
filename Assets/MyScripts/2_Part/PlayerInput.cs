@@ -22,6 +22,13 @@ namespace RedBallRemake.Inputs
             playerMeshRenderer = GetComponent<MeshRenderer>();
         }
 
+        private void Start()
+        {
+            thirdView.depth = 0;
+            firstView.depth = 10;
+            playerMeshRenderer.enabled = false;
+        }
+
         // Update is called once per frame
         void Update()
         {
@@ -36,15 +43,11 @@ namespace RedBallRemake.Inputs
 
             if (Input.GetKeyDown(KeyCode.V) && thirdView.depth == 10)
             {
-                thirdView.depth = 0;
-                firstView.depth = 10;
-                playerMeshRenderer.enabled = false;
+                SwitchFirstPerson();
             }
             else if (Input.GetKeyDown(KeyCode.V) && thirdView.depth < 10)
             {
-                firstView.depth = 0;
-                thirdView.depth = 10;
-                playerMeshRenderer.enabled = true;
+               SwitchThirdPerson();
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -70,6 +73,20 @@ namespace RedBallRemake.Inputs
         private void FixedUpdate()
         {
             playerMovement.MoveCharacter(movement);
+        }
+
+        public void SwitchFirstPerson()
+        {
+            thirdView.depth = 0;
+            firstView.depth = 10;
+            playerMeshRenderer.enabled = false;
+        }
+
+        public void SwitchThirdPerson()
+        {
+            firstView.depth = 0;
+            thirdView.depth = 10;
+            playerMeshRenderer.enabled = true;
         }
 
         private void FollowCamera(Camera camera)
