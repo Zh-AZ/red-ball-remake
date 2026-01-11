@@ -30,7 +30,7 @@ public class GeneratorTrigger : PlayerInventory
     {
         foreach (var t in interactText)
         {
-            if (hasCanisterFuel == false)
+            if (HasItem("CanisterFuel") == false)
                 t.text = "You need a fuel canister to start the generator!";
             else
                 t.text = "You can fill up the generator!";
@@ -38,7 +38,7 @@ public class GeneratorTrigger : PlayerInventory
             t.gameObject.SetActive(true);
         }
 
-        if (hasCanisterFuel && Input.GetKeyDown(KeyCode.E))
+        if (HasItem("CanisterFuel") && Input.GetKeyDown(KeyCode.E))
         {
             generatorLampCopy.SetActive(false);
             firstLampCopy.SetActive(false);
@@ -47,7 +47,8 @@ public class GeneratorTrigger : PlayerInventory
             generatorLight.SetActive(true);
             firstLight.SetActive(true);
             secondLight.SetActive(true);
-            hasElectricity = true;
+            AddItem("Electricity");
+            //hasElectricity = true;
             gameObject.SetActive(false);
 
             foreach (var t in interactText)

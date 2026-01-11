@@ -36,7 +36,7 @@ public class CanisterHouseTrigger : PlayerInventory
             //else if ((hasScrewdriver && hasHammer && hasBurglarKeys) == false)
             //    t.text = "You need a screwdriver, hammer and tools keys to open the Canister House!";
 
-            switch (hasScrewdriver, hasHammer, hasBurglarKeys)
+            switch (HasItem("Screwdriver"), HasItem("Hammer"), HasItem("BurglarKeys"))
             {
                 case (true, true, true):
                     t.text = "You have the screwdriver, hammer and tools keys to open the Canister House!";
@@ -67,7 +67,7 @@ public class CanisterHouseTrigger : PlayerInventory
             t.gameObject.SetActive(true);
         }
 
-        if (hasScrewdriver && hasHammer && hasBurglarKeys && Input.GetKeyDown(KeyCode.E))
+        if (HasItem("Screwdriver") && HasItem("Hammer") && HasItem("BurglarKeys") && Input.GetKeyDown(KeyCode.E))
         {
             gameObject.SetActive(false);
 

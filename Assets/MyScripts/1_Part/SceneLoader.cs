@@ -7,12 +7,31 @@ using UnityEngine.SceneManagement;
 
 namespace RedBallRemake.Inputs 
 {
-    public class SceneLoader : MonoBehaviour
+    public class SceneLoader : PlayerInventory
     {
         [SerializeField] private int sceneIndex;
+
+        private void Start()
+        {
+        }
+
         public void ResetScene()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            items.Clear();
+
+            //hasKey = false;
+            //hasHose = false;
+            //hasElectricity = false;
+            //hasShovel = false;
+
+            //hasCanisterFuel = false;
+            //hasCanister = false;
+
+            //hasScrewdriver = false;
+            //hasHammer = false;
+            //hasBurglarKeys = false;
         }
 
         public void LoadScene(int scene)

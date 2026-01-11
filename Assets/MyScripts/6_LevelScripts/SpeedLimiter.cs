@@ -17,7 +17,6 @@ public class SpeedLimiter : MonoBehaviour
     void Update()
     {
         speed = playerRigidbody.linearVelocity.magnitude;
-        Debug.Log("Current Speed: " + speed);
     }
 
     private void FixedUpdate()

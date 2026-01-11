@@ -21,7 +21,7 @@ public class CarTrigger : PlayerInventory
     {
         foreach (TMP_Text text in interactText)
         {
-            if (hasCanisterFuel)
+            if (HasItem("CanisterFuel"))
             {
                 text.gameObject.SetActive(false);
             }
@@ -30,15 +30,15 @@ public class CarTrigger : PlayerInventory
                 text.gameObject.SetActive(true);
             }
             
-            if (hasCanister && hasHose)
+            if (HasItem("Canister") && HasItem("Hose"))
             {
                 text.text = "Press E to refuel the car";
             }
-            else if (hasCanister)
+            else if (HasItem("Canister"))
             {
                 text.text = "You need a hose to refuel the car";
             }
-            else if (hasHose)
+            else if (HasItem("Hose"))
             {
                 text.text = "You need a canister to refuel the car";
             }
@@ -48,9 +48,10 @@ public class CarTrigger : PlayerInventory
             }
         }
 
-        if (hasCanister && hasHose && Input.GetKeyDown(KeyCode.E))
+        if (HasItem("Canister") && HasItem("Hose") && Input.GetKeyDown(KeyCode.E))
         {
-            hasCanisterFuel = true;
+            AddItem("CanisterFuel");
+            //hasCanisterFuel = true;
         }
     }
 

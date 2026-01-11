@@ -1,46 +1,19 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class BurglarKeysTrigger : PlayerInventory
+public class BurglarKeysTrigger : TakeThings
 {
-    [SerializeField] private GameObject burglarKeys;
-    [SerializeField] private TMP_Text[] interactText;
+    private const string ITEM_ID = "BurglarKeys";
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerStay(Collider other)
     {
-
-        foreach (var t in interactText)
-        {
-            t.gameObject.SetActive(true);
-            t.text = "Press E to pick up the burglar keys.";
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            hasBurglarKeys = true;
-            burglarKeys.SetActive(false);
-            gameObject.SetActive(false);
-
-            foreach (var t in interactText)
-                t.gameObject.SetActive(false);
-        }
+        EnterTrigger(ITEM_ID, "Press E to pick up the burglar keys");
     }
 
     private void OnTriggerExit(Collider other)
     {
-        foreach (var t in interactText)
-            t.gameObject.SetActive(false);
+        ExitTrigger();
     }
 }

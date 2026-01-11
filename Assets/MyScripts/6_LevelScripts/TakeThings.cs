@@ -1,0 +1,64 @@
+using System.Collections;
+using TMPro;
+using UnityEngine;
+using static UnityEditor.Progress;
+
+public class TakeThings : PlayerInventory
+{
+    [SerializeField] private GameObject item;
+    [SerializeField] private TMP_Text[] interactText;
+    [SerializeField] private ParticleSystem pickupEffect;
+    private Animator pickupAnimation;
+
+    private void Start()
+    {
+        pickupEffect = pickupEffect.GetComponent<ParticleSystem>();
+        pickupAnimation = item.GetComponent<Animator>();
+    }
+
+    protected void EnterTrigger(string itemId, string message)
+    {
+        foreach (TMP_Text text in interactText)
+        {
+            if (HasItem(itemId))
+            {
+                text.gameObject.SetActive(false);
+            }
+            else
+            {
+                text.gameObject.SetActive(true);
+            }
+
+            text.text = $"{message}";
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(WaitForPickupEffect(itemId));
+            
+        }
+
+        //return itemName;
+    }
+
+    protected void ExitTrigger()
+    {
+        foreach (TMP_Text text in interactText)
+            text.gameObject.SetActive(false);
+    }
+
+    private IEnumerator WaitForPickupEffect(string itemId)
+    {
+        pickupAnimation.SetTrigger("PickedUp");
+        yield return new WaitForSeconds(0.50f);
+        pickupEffect.Play();
+
+        AddItem(itemId);
+
+        gameObject.SetActive(false);
+        item.SetActive(false);
+
+        foreach (TMP_Text text in interactText)
+            text.gameObject.SetActive(false);
+    }
+}

@@ -24,11 +24,11 @@ public class ShedShovelTrigger : PlayerInventory
     {
         foreach (var t in text)
         {
-            if (hasKey)
+            if (HasItem("Key"))
             {
                 t.text = "You have the key to open the shed!";
             }
-            else if (!hasKey)
+            else if (!HasItem("Key"))
             {
                 t.text = "You need the key to open the shed!";
             }
@@ -36,7 +36,7 @@ public class ShedShovelTrigger : PlayerInventory
             t.gameObject.SetActive(true);
         }
 
-        if (hasKey && Input.GetKeyDown(KeyCode.E))
+        if (HasItem("Key") && Input.GetKeyDown(KeyCode.E))
         {
             rightShedDoorAnimation.SetTrigger("ShedShovelOpenRightDoor");
             leftShedDoorAnimation.SetTrigger("ShedOpenLeftDoor");

@@ -23,7 +23,7 @@ public class DestroyStones : PlayerInventory
         {
             foreach (TMP_Text text in interactionText)
             {
-                if (hasShovel)
+                if (HasItem("Shovel"))
                 {
                     text.gameObject.SetActive(true);
                     text.text = "Press E to destroy the stones";
@@ -34,7 +34,7 @@ public class DestroyStones : PlayerInventory
                 }
             }
 
-            if (hasShovel && Input.GetKeyDown(KeyCode.E))
+            if (HasItem("Shovel") && Input.GetKeyDown(KeyCode.E))
             {
                 Destroy(gameObject);
 

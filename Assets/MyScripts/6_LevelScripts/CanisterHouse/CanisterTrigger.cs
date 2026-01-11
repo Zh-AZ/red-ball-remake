@@ -1,52 +1,18 @@
 using TMPro;
 using UnityEngine;
 
-public class CanisterTrigger : PlayerInventory
+public class CanisterTrigger : TakeThings
 {
-    [SerializeField] private GameObject canister;
-    [SerializeField] private TMP_Text[] interactionText;
+    private const string ITEM_ID = "Canister";
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerStay(Collider other)
     {
-        foreach (TMP_Text text in interactionText)
-        {
-            if (hasCanister)
-            {
-                text.gameObject.SetActive(false);
-            }
-            else
-            {
-                text.gameObject.SetActive(true);
-            }
-            
-            text.text = "Press E to take the canister";
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            canister.SetActive(false);
-            hasCanister = true;
-            
-            foreach (TMP_Text text in interactionText)
-                text.gameObject.SetActive(false);
-        }
+        EnterTrigger(ITEM_ID, "Press E to take the canister");
     }
 
     private void OnTriggerExit(Collider other)
     {
-        foreach (TMP_Text text in interactionText)
-            text.gameObject.SetActive(false);
+        ExitTrigger();
     }
 }

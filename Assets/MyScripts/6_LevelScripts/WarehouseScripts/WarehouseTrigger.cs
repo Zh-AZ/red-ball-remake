@@ -27,15 +27,15 @@ public class WarehouseTrigger : PlayerInventory
     {
         foreach (var t in text)
         {
-            if (hasElectricity == false)
+            if (HasItem("Electricity") == false)
                 t.text = "You need to restore electricity to open the warehouse!";
-            else if (hasElectricity)
+            else if (HasItem("Electricity"))
                 t.text = "You have the electricity to open the warehouse!";
 
             t.gameObject.SetActive(true);
         }
 
-        if (hasElectricity && Input.GetKeyDown(KeyCode.E))
+        if (HasItem("Electricity") && Input.GetKeyDown(KeyCode.E))
         {
             warehouseDoorAnimation.SetTrigger("WarehouseOpenDoor");
             gameObject.SetActive(false);
