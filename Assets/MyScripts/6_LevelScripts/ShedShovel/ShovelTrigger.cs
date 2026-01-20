@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class ShovelTrigger : TakeThings
+public class ShovelTrigger : TakeThingsEffect
 {
     private const string ITEM_ID = "Shovel";
 
@@ -10,7 +10,7 @@ public class ShovelTrigger : TakeThings
     {
         if (other.CompareTag("Player"))
         {
-            EnterTrigger(ITEM_ID, "Press E to pick up the shovel");
+            EnterTrigger(ITEM_ID, "Нажмите <color=#ff0059><align=\"center\"><b>Е</b></color> чтобы взять лопату");
         }
     }
 

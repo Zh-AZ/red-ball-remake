@@ -26,11 +26,11 @@ public class ShedShovelTrigger : PlayerInventory
         {
             if (HasItem("Key"))
             {
-                t.text = "You have the key to open the shed!";
+                t.text = "У вас есть ключ чтобы открыть дверь";
             }
             else if (!HasItem("Key"))
             {
-                t.text = "You need the key to open the shed!";
+                t.text = "Вам нужен ключ чтобы открыть дверь";
             }
 
             t.gameObject.SetActive(true);

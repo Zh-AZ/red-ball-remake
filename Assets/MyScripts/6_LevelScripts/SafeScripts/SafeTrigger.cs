@@ -23,7 +23,7 @@ public class SafeTrigger : MonoBehaviour
     {
         foreach (var t in interactText)
         {
-            t.text = "Press E to look inside the safe.";
+            t.text = "Нажмите <color=#ff0059><align=\"center\"><b>Е</b></color> чтобы ввести код";
             t.gameObject.SetActive(true);
         }
 

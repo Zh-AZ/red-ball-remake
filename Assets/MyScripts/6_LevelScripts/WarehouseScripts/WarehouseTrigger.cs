@@ -28,9 +28,9 @@ public class WarehouseTrigger : PlayerInventory
         foreach (var t in text)
         {
             if (HasItem("Electricity") == false)
-                t.text = "You need to restore electricity to open the warehouse!";
+                t.text = "Нужно электричество чтобы открыть дверь";
             else if (HasItem("Electricity"))
-                t.text = "You have the electricity to open the warehouse!";
+                t.text = "Електричество подключено, можно открыть дверь";
 
             t.gameObject.SetActive(true);
         }

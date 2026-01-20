@@ -9,7 +9,7 @@ public class ExitMapFog : MonoBehaviour
     [SerializeField] private Rigidbody player;
     [SerializeField] private Image fogImageFPV;
     [SerializeField] private Image fogImageTPV;
-    [SerializeField] private PlayerInput playerInput;
+    private PlayerInput playerInput;
     public static ExitMapFog Instance;
 
     Coroutine fadeRoutine;

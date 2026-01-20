@@ -31,9 +31,9 @@ public class GeneratorTrigger : PlayerInventory
         foreach (var t in interactText)
         {
             if (HasItem("CanisterFuel") == false)
-                t.text = "You need a fuel canister to start the generator!";
+                t.text = "¬ам нужна канистра с топливом чтобы запустить генератор";
             else
-                t.text = "You can fill up the generator!";
+                t.text = "«аправить генератор";
 
             t.gameObject.SetActive(true);
         }

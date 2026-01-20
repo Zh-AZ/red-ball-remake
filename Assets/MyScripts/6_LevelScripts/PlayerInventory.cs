@@ -1,19 +1,22 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    //protected static bool hasKey = false;
-    //protected static bool hasHose = false;
-    //protected static bool hasElectricity = false;
-    //protected static bool hasShovel = false;
+    // Inventory flags for various items
 
-    //protected static bool hasCanisterFuel = false;
-    //protected static bool hasCanister = false;
+    //[SerializeField] private bool hasKey;
+    //[SerializeField] private bool hasHose;
+    //[SerializeField] private bool hasElectricity;
+    //[SerializeField] private bool hasShovel;
 
-    //protected static bool hasScrewdriver = false;
-    //protected static bool hasHammer = false;
-    //protected static bool hasBurglarKeys = false;
+    //[SerializeField] private bool hasCanisterFuel;
+    //[SerializeField] private bool hasCanister;
+
+    //[SerializeField] private bool hasScrewdriver;
+    //[SerializeField] private bool hasHammer;
+    //[SerializeField] private bool hasBurglarKeys;
 
     protected static HashSet<string> items = new HashSet<string>();
 

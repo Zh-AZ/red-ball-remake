@@ -26,7 +26,7 @@ public class DestroyStones : PlayerInventory
                 if (HasItem("Shovel"))
                 {
                     text.gameObject.SetActive(true);
-                    text.text = "Press E to destroy the stones";
+                    text.text = "Нажмите <color=#ff0059><align=\"center\"><b>Е</b></color> чтобы копать";
                 }
                 else
                 {

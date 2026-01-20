@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class TakeThings : PlayerInventory
+public class TakeThingsEffect : PlayerInventory
 {
     [SerializeField] private GameObject item;
     [SerializeField] private TMP_Text[] interactText;
