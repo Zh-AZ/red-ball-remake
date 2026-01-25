@@ -8,7 +8,6 @@ public class ScrewdriverTrigger : TakeThingsEffect
 
     private void OnTriggerStay(Collider other)
     {
-        //EnterTigger(hasScrewdriver, "Press E to pick up the screwdriver");
         EnterTrigger(ITEM_ID, "Нажмите <color=#ff0059><align=\"center\"><b>Е</b></color> чтобы взять отвертку");
     }
 

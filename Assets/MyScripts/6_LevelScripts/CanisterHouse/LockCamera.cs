@@ -8,13 +8,10 @@ public class LockCamera : MonoBehaviour
     [SerializeField] private GameObject trigger;
     [SerializeField] private GameObject cursorChecker;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Переход к камере взлома замка и отключение курсора
+    /// </summary>
     void Update()
     {
         if (gameObject)

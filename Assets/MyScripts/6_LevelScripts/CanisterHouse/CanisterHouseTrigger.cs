@@ -9,33 +9,14 @@ public class CanisterHouseTrigger : PlayerInventory
     [SerializeField] private GameObject originalLock;
     [SerializeField] private GameObject fakeLock;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Проверка инструментов для взлома замка
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
         foreach (var t in interactText)
         {
-            //if (hasScrewdriver && hasHammer && hasBurglarKeys)
-            //    t.text = "You have the screwdriver, hammer and tools keys to open the Canister House!";
-            //else if (hasScrewdriver)
-            //    t.text = "You have the screwdriver but need a hammer and tools keys to open the Canister House!";
-            //else if (hasHammer)
-            //    t.text = "You have the hammer but need a screwdriver and tools keys to open the Canister House!";
-            //else if (hasBurglarKeys)
-            //    t.text = "You have the tools keys but need a screwdriver and hammer to open the Canister House!";
-            //else if ((hasScrewdriver && hasHammer && hasBurglarKeys) == false)
-            //    t.text = "You need a screwdriver, hammer and tools keys to open the Canister House!";
-
             switch (HasItem("Screwdriver"), HasItem("Hammer"), HasItem("BurglarKeys"))
             {
                 case (true, true, true):

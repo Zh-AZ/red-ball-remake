@@ -1,6 +1,9 @@
 using RedBallRemake.Inputs;
 using UnityEngine;
 
+/// <summary>
+/// Ускорение при ходьбе по ступенькам (чтобы шарик не скатывался вниз)
+/// </summary>
 public class StepsAccleration : MonoBehaviour
 {
     [SerializeField] private PlayerMovement playerMovement;
@@ -9,12 +12,6 @@ public class StepsAccleration : MonoBehaviour
     void Start()
     {
         playerMovement = playerMovement.GetComponent<PlayerMovement>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnCollisionStay(Collision collision)

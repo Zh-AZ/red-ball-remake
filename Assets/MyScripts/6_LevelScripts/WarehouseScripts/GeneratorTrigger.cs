@@ -10,22 +10,13 @@ public class GeneratorTrigger : PlayerInventory
     [SerializeField] private GameObject generatorLampCopy;
     [SerializeField] private GameObject firstLampCopy;
     [SerializeField] private GameObject secondLampCopy;
-    //private MeshRenderer meshRenderer;
 
     [SerializeField] private TMP_Text[] interactText;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Взаимодействие с генератором и замен фейк лампочек на мерцающие 
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
         foreach (var t in interactText)
@@ -33,7 +24,7 @@ public class GeneratorTrigger : PlayerInventory
             if (HasItem("CanisterFuel") == false)
                 t.text = "Вам нужна канистра с топливом чтобы запустить генератор";
             else
-                t.text = "Заправить генератор";
+                t.text = "Нажмите <color=#ff0059><align=\"center\"><b>Е</b></color> чтобы заправить генератор";
 
             t.gameObject.SetActive(true);
         }
@@ -48,7 +39,6 @@ public class GeneratorTrigger : PlayerInventory
             firstLight.SetActive(true);
             secondLight.SetActive(true);
             AddItem("Electricity");
-            //hasElectricity = true;
             gameObject.SetActive(false);
 
             foreach (var t in interactText)

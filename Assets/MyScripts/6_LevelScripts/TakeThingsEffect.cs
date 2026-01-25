@@ -16,6 +16,11 @@ public class TakeThingsEffect : PlayerInventory
         pickupAnimation = item.GetComponent<Animator>();
     }
 
+    /// <summary>
+    /// Показать соответсвующий текст при входе в триггер
+    /// </summary>
+    /// <param name="itemId"></param>
+    /// <param name="message"></param>
     protected void EnterTrigger(string itemId, string message)
     {
         foreach (TMP_Text text in interactText)
@@ -35,18 +40,23 @@ public class TakeThingsEffect : PlayerInventory
         if (Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(WaitForPickupEffect(itemId));
-            
         }
-
-        //return itemName;
     }
 
+    /// <summary>
+    /// Отключение текста при выходе из триггера
+    /// </summary>
     protected void ExitTrigger()
     {
         foreach (TMP_Text text in interactText)
             text.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Запуск анимации, эффекта и добавление в инвентарь при подборе предмета
+    /// </summary>
+    /// <param name="itemId"></param>
+    /// <returns></returns>
     private IEnumerator WaitForPickupEffect(string itemId)
     {
         pickupAnimation.SetTrigger("PickedUp");

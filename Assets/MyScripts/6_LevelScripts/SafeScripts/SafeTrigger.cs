@@ -13,12 +13,10 @@ public class SafeTrigger : MonoBehaviour
         rigidbodyPlayer = rigidbodyPlayer.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Âחאטהויסעגטו ס סויפמל
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
         foreach (var t in interactText)

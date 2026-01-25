@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// ограничение скорости игрока
+/// </summary>
 public class SpeedLimiter : MonoBehaviour
 {
     [SerializeField] private Rigidbody playerRigidbody;
@@ -25,25 +28,5 @@ public class SpeedLimiter : MonoBehaviour
         {
             playerRigidbody.linearVelocity = playerRigidbody.linearVelocity.normalized * speedLimit;
         }
-        //if (speed > speedLimit && isColliding)
-        //{
-        //    playerRigidbody.linearVelocity = playerRigidbody.linearVelocity.normalized * speedLimit;
-        //}
     }
-
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        isColliding = true;
-    //    }
-    //}
-
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        isColliding = false;
-    //    }
-    //}
 }

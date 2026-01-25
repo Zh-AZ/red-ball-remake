@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CursorChecker : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class CursorChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!menuCanvases[0].activeSelf && !menuCanvases[1].activeSelf && playerComponents.activeSelf && safeCamera.depth == -1)
+        if (!menuCanvases[0].activeSelf && !menuCanvases[1].activeSelf && playerComponents.activeSelf 
+            || SceneManager.loadedSceneCount == 6 && safeCamera.depth == -1)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

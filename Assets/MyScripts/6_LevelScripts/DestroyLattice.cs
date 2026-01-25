@@ -10,12 +10,10 @@ public class DestroyLattice : MonoBehaviour
         latticeRigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Взлом решетки входа в подземелье
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionStay(Collision collision)
     {
         if ( collision.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))

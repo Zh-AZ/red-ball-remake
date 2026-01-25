@@ -4,29 +4,32 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    // Inventory flags for various items
+    public static HashSet<string> items = new HashSet<string>();
 
-    //[SerializeField] private bool hasKey;
-    //[SerializeField] private bool hasHose;
-    //[SerializeField] private bool hasElectricity;
-    //[SerializeField] private bool hasShovel;
-
-    //[SerializeField] private bool hasCanisterFuel;
-    //[SerializeField] private bool hasCanister;
-
-    //[SerializeField] private bool hasScrewdriver;
-    //[SerializeField] private bool hasHammer;
-    //[SerializeField] private bool hasBurglarKeys;
-
-    protected static HashSet<string> items = new HashSet<string>();
-
+    /// <summary>
+    /// Проверка наличия предмета в инвентаре
+    /// </summary>
+    /// <param name="itemId"></param>
+    /// <returns></returns>
     public static bool HasItem(string itemId)
     {
         return items.Contains(itemId);
     }
 
+    /// <summary>
+    /// Добавить предмет в инвентарь
+    /// </summary>
+    /// <param name="itemId"></param>
     public static void AddItem(string itemId)
     {
         items.Add(itemId);
+    }
+
+    /// <summary>
+    /// Удалить предметы из инвентаря
+    /// </summary>
+    public static void ClearInventory()
+    {
+        items.Clear();
     }
 }

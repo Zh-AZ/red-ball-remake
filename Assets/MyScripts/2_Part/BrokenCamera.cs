@@ -20,7 +20,7 @@ public class BrokenCamera : MonoBehaviour
     }
 
     /// <summary>
-    /// ¬ывод камеры при столкновении с игроком
+    /// ¬ывод IP видеокамеры при столкновении с игроком
     /// </summary>
     /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)

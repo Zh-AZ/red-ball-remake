@@ -5,7 +5,7 @@ public class ShedShovelTrigger : PlayerInventory
 {
     [SerializeField] private Animator rightShedDoorAnimation;
     [SerializeField] private Animator leftShedDoorAnimation;
-    [SerializeField] private TMP_Text[] text;
+    [SerializeField] private TMP_Text[] interactTexts;
     //[SerializeField] private GameObject trigger;
 
     private void Awake()
@@ -14,15 +14,13 @@ public class ShedShovelTrigger : PlayerInventory
         leftShedDoorAnimation = leftShedDoorAnimation.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Открытие двери сарая с лопатой
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
-        foreach (var t in text)
+        foreach (var t in interactTexts)
         {
             if (HasItem("Key"))
             {
@@ -42,14 +40,14 @@ public class ShedShovelTrigger : PlayerInventory
             leftShedDoorAnimation.SetTrigger("ShedOpenLeftDoor");
             gameObject.SetActive(false);
 
-            foreach (var t in text)
+            foreach (var t in interactTexts)
                 t.gameObject.SetActive(false);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        foreach (var t in text)
+        foreach (var t in interactTexts)
             t.gameObject.SetActive(false);
     }
 }
