@@ -5,25 +5,20 @@ using UnityEngine;
 public class CarTrigger : PlayerInventory
 {
     [SerializeField] private TMP_Text[] interactText;
+    private bool isInsideTrigger;
+
+    private void Update()
+    {
+        if (isInsideTrigger && Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(FillCanister());
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {
-        StartCoroutine(FillCanister());
-    }
+        isInsideTrigger = true;
 
-    private void OnTriggerExit(Collider other)
-    {
-        foreach (TMP_Text text in interactText)
-            text.gameObject.SetActive(false);
-    }
-
-
-    /// <summary>
-    /// Заполение канистры топливом и проверка наличия необходимых предметов
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator FillCanister()
-    {
         foreach (TMP_Text text in interactText)
         {
             if (HasItem("CanisterFuel"))
@@ -52,8 +47,24 @@ public class CarTrigger : PlayerInventory
                 text.text = "Нужна канистра и шланг чтобы заполнить канистру топливом";
             }
         }
+    }
 
-        if (HasItem("Canister") && HasItem("Hose") && Input.GetKeyDown(KeyCode.E))
+    private void OnTriggerExit(Collider other)
+    {
+        isInsideTrigger = false;
+
+        foreach (TMP_Text text in interactText)
+            text.gameObject.SetActive(false);
+    }
+
+
+    /// <summary>
+    /// Заполение канистры топливом и проверка наличия необходимых предметов
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator FillCanister()
+    {
+        if (HasItem("Canister") && HasItem("Hose"))
         {
             AddItem("CanisterFuel");
 

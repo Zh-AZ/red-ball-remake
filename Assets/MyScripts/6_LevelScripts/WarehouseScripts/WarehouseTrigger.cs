@@ -5,18 +5,26 @@ public class WarehouseTrigger : PlayerInventory
 {
     [SerializeField] private Animator warehouseDoorAnimation;
     [SerializeField] private TMP_Text[] text;
+    private bool isInsideTrigger;
+
 
     private void Awake()
     {
         warehouseDoorAnimation = warehouseDoorAnimation.GetComponent<Animator>();
     }
 
-    /// <summary>
-    /// Взаимодействие с дверью склада
-    /// </summary>
-    /// <param name="other"></param>
+    private void Update()
+    {
+        if (isInsideTrigger && Input.GetKeyDown(KeyCode.E))
+        {
+            OpenWarehouseDoors();
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
+        isInsideTrigger = true;
+
         foreach (var t in text)
         {
             if (HasItem("Electricity") == false)
@@ -26,8 +34,15 @@ public class WarehouseTrigger : PlayerInventory
 
             t.gameObject.SetActive(true);
         }
+    }
 
-        if (HasItem("Electricity") && Input.GetKeyDown(KeyCode.E))
+    /// <summary>
+    /// Взаимодействие с дверью склада
+    /// </summary>
+    /// <param name="other"></param>
+    private void OpenWarehouseDoors()
+    {
+        if (HasItem("Electricity"))
         {
             warehouseDoorAnimation.SetTrigger("WarehouseOpenDoor");
             gameObject.SetActive(false);
@@ -39,6 +54,8 @@ public class WarehouseTrigger : PlayerInventory
 
     private void OnTriggerExit(Collider other)
     {
+        isInsideTrigger = false;
+
         foreach (var t in text)
             t.gameObject.SetActive(false);
     }

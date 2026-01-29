@@ -26,7 +26,7 @@ public class PlayerInventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Удалить предметы из инвентаря
+    /// Очистить инвентарь
     /// </summary>
     public static void ClearInventory()
     {

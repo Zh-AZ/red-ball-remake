@@ -8,6 +8,21 @@ public class CanisterHouseTrigger : PlayerInventory
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject originalLock;
     [SerializeField] private GameObject fakeLock;
+    [SerializeField] private Rigidbody playerRigidbody;
+    private bool isInsideTrigger;
+
+    private void Start()
+    {
+        playerRigidbody = playerRigidbody.GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        if (isInsideTrigger && Input.GetKeyDown(KeyCode.E))
+        {
+            LockReplace();
+        }
+    }
 
     /// <summary>
     /// Проверка инструментов для взлома замка
@@ -15,6 +30,8 @@ public class CanisterHouseTrigger : PlayerInventory
     /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
+        isInsideTrigger = true;
+
         foreach (var t in interactText)
         {
             switch (HasItem("Screwdriver"), HasItem("Hammer"), HasItem("BurglarKeys"))
@@ -40,18 +57,26 @@ public class CanisterHouseTrigger : PlayerInventory
                 case (false, true, true):
                     t.text = "У вас есть молоток и отмычки, нужна отвертка для взлома замка";
                     break;
-                case (false, false, false):
+                default:
                     t.text = "Надо найти отвертку, молоток и отмычки чтобы взломать замок";
                     break;
             }
 
             t.gameObject.SetActive(true);
         }
+    }
 
-        if (HasItem("Screwdriver") && HasItem("Hammer") && HasItem("BurglarKeys") && Input.GetKeyDown(KeyCode.E))
+    /// <summary>
+    /// Заменить фейк замок на настоящий чтобы началась игра взлома замка
+    /// </summary>
+    private void LockReplace()
+    {
+        if (HasItem("Screwdriver") && HasItem("Hammer") && HasItem("BurglarKeys"))
         {
-            gameObject.SetActive(false);
+            playerRigidbody.linearVelocity = Vector3.zero;
+            playerRigidbody.angularVelocity = Vector3.zero;
 
+            gameObject.SetActive(false);
             lockCamera.gameObject.SetActive(true);
             originalLock.SetActive(true);
             fakeLock.SetActive(false);
@@ -64,6 +89,8 @@ public class CanisterHouseTrigger : PlayerInventory
 
     private void OnTriggerExit(Collider other)
     {
+        isInsideTrigger = false;
+
         foreach (var t in interactText)
             t.gameObject.SetActive(false);
     }

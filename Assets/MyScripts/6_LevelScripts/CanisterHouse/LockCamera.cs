@@ -7,7 +7,13 @@ public class LockCamera : MonoBehaviour
     [SerializeField] private GameObject fakeLock;
     [SerializeField] private GameObject trigger;
     [SerializeField] private GameObject cursorChecker;
+    [SerializeField] private LockPikingGame lockPikingGame;
 
+
+    private void Start()
+    {
+        lockPikingGame = lockPikingGame.GetComponent<LockPikingGame>();
+    }
 
     /// <summary>
     /// Переход к камере взлома замка и отключение курсора
@@ -23,6 +29,7 @@ public class LockCamera : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            lockPikingGame.Reset();
             cursorChecker.SetActive(true);
             player.SetActive(true);
             originalLock.SetActive(false);

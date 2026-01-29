@@ -10,6 +10,10 @@ namespace RedBallRemake.Inputs
     {
         [SerializeField] private Camera thirdView;
         [SerializeField] private Camera firstView;
+
+        private AudioListener audioListenerFPV;
+        private AudioListener audioListenerTPV;
+
         [SerializeField] private GameObject thirdPersonView;
         [SerializeField] private GameObject[] menuCanvas;
         private Vector3 movement;
@@ -24,9 +28,10 @@ namespace RedBallRemake.Inputs
 
         private void Start()
         {
-            thirdView.depth = 0;
-            firstView.depth = 10;
-            playerMeshRenderer.enabled = false;
+            audioListenerFPV = firstView.GetComponent<AudioListener>();
+            audioListenerTPV = thirdView.GetComponent<AudioListener>();
+
+            SwitchFirstPerson();
         }
 
         // Update is called once per frame
@@ -80,6 +85,8 @@ namespace RedBallRemake.Inputs
             thirdView.depth = 0;
             firstView.depth = 10;
             playerMeshRenderer.enabled = false;
+            audioListenerTPV.enabled = false;
+            audioListenerFPV.enabled = true;
         }
 
         public void SwitchThirdPerson()
@@ -87,6 +94,8 @@ namespace RedBallRemake.Inputs
             firstView.depth = 0;
             thirdView.depth = 10;
             playerMeshRenderer.enabled = true;
+            audioListenerFPV.enabled = false;
+            audioListenerTPV.enabled = true;
         }
 
         private void FollowCamera(Camera camera)

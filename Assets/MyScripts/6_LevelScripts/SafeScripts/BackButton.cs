@@ -3,10 +3,19 @@ using UnityEngine;
 
 public class BackButton : MonoBehaviour
 {
-    [SerializeField] private Camera safeCamera;
+    [SerializeField] private GameObject safeCamera;
+    [SerializeField] private GameObject player;
+    private AudioListener audioListener;
+
+    private void Start()
+    {
+        audioListener = safeCamera.GetComponent<AudioListener>();
+    }
 
     public void OnButtonClick()
     {
-        safeCamera.depth = -1;
+        safeCamera.SetActive(false);
+        player.SetActive(true);
+        audioListener.enabled = false;
     }
 }

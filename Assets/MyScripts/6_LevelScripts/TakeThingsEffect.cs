@@ -9,11 +9,21 @@ public class TakeThingsEffect : PlayerInventory
     [SerializeField] private TMP_Text[] interactText;
     [SerializeField] private ParticleSystem pickupEffect;
     private Animator pickupAnimation;
+    private string itemId;
+    protected bool isInsisdeTrigger;
 
     private void Start()
     {
         pickupEffect = pickupEffect.GetComponent<ParticleSystem>();
         pickupAnimation = item.GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (isInsisdeTrigger && Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(WaitForPickupEffect(itemId));
+        }
     }
 
     /// <summary>
@@ -37,10 +47,13 @@ public class TakeThingsEffect : PlayerInventory
             text.text = $"{message}";
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StartCoroutine(WaitForPickupEffect(itemId));
-        }
+        isInsisdeTrigger = true;
+        this.itemId = itemId;
+
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    StartCoroutine(WaitForPickupEffect(itemId));
+        //}
     }
 
     /// <summary>
@@ -48,6 +61,8 @@ public class TakeThingsEffect : PlayerInventory
     /// </summary>
     protected void ExitTrigger()
     {
+        isInsisdeTrigger = false;
+
         foreach (TMP_Text text in interactText)
             text.gameObject.SetActive(false);
     }

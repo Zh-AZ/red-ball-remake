@@ -15,8 +15,7 @@ public class CursorChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!menuCanvases[0].activeSelf && !menuCanvases[1].activeSelf && playerComponents.activeSelf 
-            || SceneManager.loadedSceneCount == 6 && safeCamera.depth == -1)
+        if (!menuCanvases[0].activeSelf && !menuCanvases[1].activeSelf && playerComponents.activeSelf)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

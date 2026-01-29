@@ -12,13 +12,20 @@ public class GeneratorTrigger : PlayerInventory
     [SerializeField] private GameObject secondLampCopy;
 
     [SerializeField] private TMP_Text[] interactText;
+    private bool isInsideTrigger;
 
-    /// <summary>
-    /// Взаимодействие с генератором и замен фейк лампочек на мерцающие 
-    /// </summary>
-    /// <param name="other"></param>
+    private void Update()
+    {
+        if (isInsideTrigger && Input.GetKeyDown(KeyCode.E))
+        {
+            TurnOnFlickerLight();
+        }
+    }
+  
     private void OnTriggerStay(Collider other)
     {
+        isInsideTrigger = true;
+
         foreach (var t in interactText)
         {
             if (HasItem("CanisterFuel") == false)
@@ -28,8 +35,15 @@ public class GeneratorTrigger : PlayerInventory
 
             t.gameObject.SetActive(true);
         }
+    }
 
-        if (HasItem("CanisterFuel") && Input.GetKeyDown(KeyCode.E))
+    /// <summary>
+    /// Взаимодействие с генератором и замен фейк лампочек на мерцающие 
+    /// </summary>
+    /// <param name="other"></param>
+    private void TurnOnFlickerLight()
+    {
+        if (HasItem("CanisterFuel"))
         {
             generatorLampCopy.SetActive(false);
             firstLampCopy.SetActive(false);
@@ -43,11 +57,13 @@ public class GeneratorTrigger : PlayerInventory
 
             foreach (var t in interactText)
                 t.gameObject.SetActive(false);
-        }   
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        isInsideTrigger = false;
+
         foreach (var t in interactText)
             t.gameObject.SetActive(false);
     }

@@ -1,3 +1,4 @@
+using RedBallRemake.Inputs;
 using System;
 using System.Collections;
 using TMPro;
@@ -43,6 +44,8 @@ namespace NavKeypad
         [SerializeField] private GameObject burglarKeysTrigger;
         [SerializeField] private GameObject safeTrigger;
         [SerializeField] private TMP_Text[] interactText;
+        [SerializeField] private GameObject player;
+        [SerializeField] private PlayerInput playerInput;
 
 
         private string currentInput;
@@ -53,6 +56,11 @@ namespace NavKeypad
         {
             ClearInput();
             panelMesh.material.SetVector("_EmissionColor", screenNormalColor * screenIntensity);
+        }
+
+        private void Start()
+        {
+            playerInput = playerInput.GetComponent<PlayerInput>();
         }
 
 
@@ -142,7 +150,9 @@ namespace NavKeypad
         {
             safeTrigger.SetActive(false);
             yield return new WaitForSeconds(1);
-            safeCamera.depth = -1;
+            safeCamera.gameObject.SetActive(false);
+            player.SetActive(true);
+            playerInput.SwitchFirstPerson();
             yield return new WaitForSeconds(2);
             safeDoorAnim.SetTrigger("SafeOpenDoor");
             yield return new WaitForSeconds(2);

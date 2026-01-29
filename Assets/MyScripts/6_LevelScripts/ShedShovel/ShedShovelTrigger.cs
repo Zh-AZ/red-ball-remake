@@ -6,7 +6,8 @@ public class ShedShovelTrigger : PlayerInventory
     [SerializeField] private Animator rightShedDoorAnimation;
     [SerializeField] private Animator leftShedDoorAnimation;
     [SerializeField] private TMP_Text[] interactTexts;
-    //[SerializeField] private GameObject trigger;
+    private bool isInsideTrigger;
+
 
     private void Awake()
     {
@@ -14,27 +15,40 @@ public class ShedShovelTrigger : PlayerInventory
         leftShedDoorAnimation = leftShedDoorAnimation.GetComponent<Animator>();
     }
 
-    /// <summary>
-    /// Открытие двери сарая с лопатой
-    /// </summary>
-    /// <param name="other"></param>
+    private void Update()
+    {
+        if (isInsideTrigger && Input.GetKeyDown(KeyCode.E))
+        {
+            OpenDoors();
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
+        isInsideTrigger = true;
+
         foreach (var t in interactTexts)
         {
             if (HasItem("Key"))
             {
                 t.text = "У вас есть ключ чтобы открыть дверь";
             }
-            else if (!HasItem("Key"))
+            else if (HasItem("Key") == false)
             {
                 t.text = "Вам нужен ключ чтобы открыть дверь";
             }
 
             t.gameObject.SetActive(true);
         }
+    }
 
-        if (HasItem("Key") && Input.GetKeyDown(KeyCode.E))
+    /// <summary>
+    /// Открытие двери сарая с лопатой
+    /// </summary>
+    /// <param name="other"></param>
+    private void OpenDoors()
+    {
+        if (HasItem("Key"))
         {
             rightShedDoorAnimation.SetTrigger("ShedShovelOpenRightDoor");
             leftShedDoorAnimation.SetTrigger("ShedOpenLeftDoor");
@@ -47,6 +61,7 @@ public class ShedShovelTrigger : PlayerInventory
 
     private void OnTriggerExit(Collider other)
     {
+        isInsideTrigger = false;
         foreach (var t in interactTexts)
             t.gameObject.SetActive(false);
     }
