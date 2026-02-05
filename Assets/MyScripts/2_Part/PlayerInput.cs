@@ -57,27 +57,30 @@ namespace RedBallRemake.Inputs
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                //EventSystem.current.SetSelectedGameObject(null);
-
-                foreach (GameObject canvas in menuCanvas)
-                {
-                    if (canvas.activeSelf)
-                    {
-                        canvas.SetActive(false);
-                        Time.timeScale = 1;
-                    }
-                    else
-                    {
-                        canvas.SetActive(true);
-                        Time.timeScale = 0;
-                    }
-                }
+                Pause();
             }
         }
 
         private void FixedUpdate()
         {
             playerMovement.MoveCharacter(movement);
+        }
+
+        public void Pause()
+        {
+            foreach (GameObject canvas in menuCanvas)
+            {
+                if (canvas.activeSelf)
+                {
+                    canvas.SetActive(false);
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    canvas.SetActive(true);
+                    Time.timeScale = 0;
+                }
+            }
         }
 
         public void SwitchFirstPerson()

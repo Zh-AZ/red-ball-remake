@@ -14,7 +14,7 @@ public class StepsAccleration : MonoBehaviour
         playerMovement = playerMovement.GetComponent<PlayerMovement>();
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         playerMovement.speed = 10f;
     }
